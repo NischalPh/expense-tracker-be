@@ -1,0 +1,18 @@
+spring:
+  application:
+  name: expense-tracker
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/EXPENSE_TRACKER?useSSL=false&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
