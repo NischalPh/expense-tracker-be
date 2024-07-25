@@ -1,13 +1,13 @@
 package com.nischal.expensetracker.common.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 
@@ -26,7 +26,6 @@ public class BaseEntity implements Serializable {
     private Long id;
 
     @JsonIgnore
-    @Generated(GenerationTime.INSERT)
     @Column(name = "status", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
     protected Boolean status;
 }

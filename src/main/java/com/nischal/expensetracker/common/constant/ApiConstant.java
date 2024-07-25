@@ -16,4 +16,5 @@ public class ApiConstant {
     public static final String DELETE = "delete";
     public static final String GET_ALL = "getAll";
     public static final String ID = "id";
+    public static final String PING = "ping";
 }

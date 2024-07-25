@@ -1,5 +1,7 @@
 package com.nischal.expensetracker.expense.service.impl;
 
+import com.nischal.expensetracker.category.entity.Category;
+import com.nischal.expensetracker.category.repository.CategoryRepository;
 import com.nischal.expensetracker.common.builder.ResponseBuilder;
 import com.nischal.expensetracker.common.dto.Response;
 import com.nischal.expensetracker.common.exception.ResourceNotFoundException;
@@ -24,14 +26,19 @@ import java.util.stream.Collectors;
 public class ExpenseServiceImpl implements ExpenseService {
 
     private final ExpenseRepository expenseRepository;
+    private final CategoryRepository categoryRepository;
 
-    public ExpenseServiceImpl(ExpenseRepository expenseRepository) {
+    public ExpenseServiceImpl(ExpenseRepository expenseRepository, CategoryRepository categoryRepository) {
         this.expenseRepository = expenseRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
     public Response addExpense(ExpenseDetailRequest expenseDetailRequest) {
+        Category category = categoryRepository.findById(expenseDetailRequest.getCategoryId())
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found."));
         Expense expense = ExpenseMapper.toEntity(expenseDetailRequest);
+        expense.setCategory(category);
         expenseRepository.save(expense);
         return ResponseBuilder.success("Expense saved successfully.");
     }

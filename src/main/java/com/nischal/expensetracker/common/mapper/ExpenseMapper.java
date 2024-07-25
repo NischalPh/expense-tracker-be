@@ -17,6 +17,7 @@ public class ExpenseMapper {
         expense.setDescription(expenseDetailRequest.getDescription());
         expense.setCurrency(expenseDetailRequest.getCurrency());
         expense.setRecurring(expenseDetailRequest.getRecurring());
+        expense.setRecordedDate(new Date());
         return expense;
     }
 
@@ -31,12 +32,14 @@ public class ExpenseMapper {
     public static ExpenseResponse toResponse(Expense expense) {
         return ExpenseResponse
                 .builder()
+                .id(expense.getId())
                 .description(expense.getDescription())
                 .amount(expense.getAmount())
                 .recordedDate(expense.getRecordedDate())
                 .currency(expense.getCurrency())
                 .recurring(expense.getRecurring())
                 .updateDate(expense.getUpdateDate())
+                .categoryResponse(CategoryMapper.convertToResponse(expense.getCategory()))
                 .build();
     }
 }

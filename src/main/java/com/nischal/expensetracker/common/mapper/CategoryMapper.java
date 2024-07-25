@@ -1,8 +1,11 @@
 package com.nischal.expensetracker.common.mapper;
 
+import com.fasterxml.jackson.databind.DatabindException;
 import com.nischal.expensetracker.category.entity.Category;
 import com.nischal.expensetracker.common.request.CategoryDetailRequest;
 import com.nischal.expensetracker.common.response.CategoryResponse;
+
+import java.util.Date;
 
 /**
  * @Author : Nischal on 7/23/2024
@@ -13,6 +16,7 @@ public class CategoryMapper {
         Category category = new Category();
         category.setName(categoryDetailRequest.getName());
         category.setDescription(categoryDetailRequest.getDescription());
+        category.setRecordedDate(new Date());
         return category;
     }
 

@@ -15,10 +15,12 @@ import java.util.Date;
 @Builder
 public class ExpenseResponse {
 
+    private Long id;
     private String description;
     private Double amount;
     private Date recordedDate;
     private String currency;
     private Boolean recurring;
     private Date updateDate;
+    private CategoryResponse categoryResponse;
 }

@@ -4,8 +4,9 @@ import com.nischal.expensetracker.common.constant.ApiConstant;
 import com.nischal.expensetracker.common.dto.Response;
 import com.nischal.expensetracker.common.request.ExpenseDetailRequest;
 import com.nischal.expensetracker.expense.service.ExpenseService;
-import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @Author : Nischal on 7/23/2024
@@ -32,12 +33,12 @@ public class ExpenseController {
         return expenseService.getAllExpense();
     }
 
-    @DeleteMapping(ApiConstant.ID)
+    @DeleteMapping("/{" + ApiConstant.ID + "}")
     public Response deleteExpense(@PathVariable(ApiConstant.ID) Long expenseId) {
         return expenseService.deleteExpense(expenseId);
     }
 
-    @PutMapping(ApiConstant.ID)
+    @PutMapping("/{" + ApiConstant.ID + "}")
     public Response updateExpense(@PathVariable(ApiConstant.ID) Long expenseId, @RequestBody ExpenseDetailRequest expenseDetailRequest) {
         return expenseService.updateExpense(expenseId, expenseDetailRequest);
     }

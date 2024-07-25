@@ -15,7 +15,7 @@
             <AppenderRef ref="ConsoleAppender" />
         </Logger>
 
-        <Logger name="com.springframework" level="error" additivity="false">
+        <Logger name="com.springframework" level="info" additivity="false">
             <AppenderRef ref="ConsoleAppender" />
         </Logger>
 

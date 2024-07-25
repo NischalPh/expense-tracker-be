@@ -4,8 +4,9 @@ import com.nischal.expensetracker.category.service.CategoryService;
 import com.nischal.expensetracker.common.constant.ApiConstant;
 import com.nischal.expensetracker.common.dto.Response;
 import com.nischal.expensetracker.common.request.CategoryDetailRequest;
-import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @Author : Nischal on 7/23/2024
@@ -32,12 +33,12 @@ public class CategoryController {
         return categoryService.getAllCategory();
     }
 
-    @DeleteMapping(ApiConstant.ID)
+    @DeleteMapping("/{" + ApiConstant.ID + "}")
     public Response deleteCategory(@PathVariable(ApiConstant.ID) Long expenseId) {
         return categoryService.deleteCategory(expenseId);
     }
 
-    @PutMapping(ApiConstant.ID)
+    @PutMapping("/{" + ApiConstant.ID + "}")
     public Response updateCategory(@PathVariable(ApiConstant.ID) Long expenseId, @RequestBody CategoryDetailRequest categoryDetailRequest) {
         return categoryService.updateCategory(expenseId, categoryDetailRequest);
     }
